@@ -1,5 +1,5 @@
 
-from auto.browser import FindElement
+from nativeApp.browser import FindElement
 import unittest
 class qiezi(unittest.TestCase):
     def setUp(self):#导航页

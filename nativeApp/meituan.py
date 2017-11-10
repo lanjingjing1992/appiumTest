@@ -1,5 +1,5 @@
 import unittest
-from auto.browser import FindElement
+from nativeApp.browser import FindElement
 class Meituan(unittest.TestCase):
     def setUp(self):
         self.myfind=FindElement('com.sankuai.meituan','com.sankuai.meituan.activity.Welcome')
