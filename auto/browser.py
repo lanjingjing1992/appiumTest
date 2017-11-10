@@ -4,13 +4,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 class FindElement(object):
-    def mystartBrowser(self):
+    def __init__(self,appPackage,appActivity):
         self.desired_capabilities = {}
         self.desired_capabilities['platformName'] = 'Android'
         self.desired_capabilities['platformVersion'] = '6.0.1'
         self.desired_capabilities['deviceName'] = '32d0d84a'
-        self.desired_capabilities['appPackage'] = 'com.qiezzi.eggplant'
-        self.desired_capabilities['appActivity'] = 'com.qiezzi.eggplant.base.WelcomeActivity'
+        self.desired_capabilities['appPackage'] = appPackage
+        self.desired_capabilities['appActivity'] = appActivity
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_capabilities)
         self.driver.implicitly_wait(30)
         #宽高：1080 1920
@@ -18,7 +18,7 @@ class FindElement(object):
         self.width=self.driver.get_window_size()['width']
         self.height=self.driver.get_window_size()['height']
 
-
+        print('连接成功')
     def myfindId(self,id):
         try:
             ID=(By.ID,id)
@@ -26,6 +26,14 @@ class FindElement(object):
             return self.driver.find_element_by_id(id)
         except:
             pass
+    def myfindClassName(self,className):
+        try:
+            classN=(By.CLASS_NAME,className)
+            WebDriverWait(self.driver,30,0.5).until(EC.presence_of_element_located(classN))
+            return self.driver.find_element_by_class_name(className)
+        except:
+            pass
+
     def myfindName(self,name):
         try:
             NAME=(By.NAME,name)

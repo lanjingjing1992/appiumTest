@@ -3,8 +3,7 @@ from auto.browser import FindElement
 import unittest
 class qiezi(unittest.TestCase):
     def setUp(self):#导航页
-        self.myfind=FindElement()
-        self.myfind.mystartBrowser()
+        self.myfind=FindElement('com.qiezzi.eggplant','com.qiezzi.eggplant.base.WelcomeActivity')
 
     def testExperience(self):#立即体验
         self.myfind.myScroll(4, 'com.qiezzi.eggplant:id/btn_firstinstall_intent')
