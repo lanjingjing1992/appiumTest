@@ -41,12 +41,30 @@ class Meituan(unittest.TestCase):
         find.myfindId('com.sankuai.meituan:id/avatar').click()  # 点击头像登陆
         loginMode=find.myfindXpath('//android.widget.TextView[contains(@text,\'推荐登录方式\')]').text
         self.assertEqual('推荐登陆方式',loginMode)
+        #检查美团首页的分类是否全部显示
+    def testD_Firstpageimgs(self):
+        find = self.myfind
+        meishi=find.myfindXpath('//android.widget.TextView[contains(@text,\'美食\')]')
+        dianying=find.myfindXpath('//android.widget.TextView[contains(@text,\'电影\')]')
+        jiudian=find.myfindXpath('//android.widget.TextView[contains(@text,\'酒店\')]')
+        yule=find.myfindXpath('//android.widget.TextView[contains(@text,\'娱乐\')]')
+        waimai=find.myfindXpath('//android.widget.TextView[contains(@text,\'外卖\')]')
+        self.assertIsNotNone(meishi)
+        self.assertIsNotNone(dianying)
+        self.assertIsNotNone(jiudian)
+        self.assertIsNotNone(yule)
+        self.assertIsNotNone(waimai)
+    def tearDown(self):
+        pass
+
+
 
 if __name__ == '__main__':
     suite=unittest.TestSuite()
-    suite.addTest(Meituan('testA_login'))
-    suite.addTest(Meituan('testB_distance'))
-    suite.addTest(Meituan('testC_assertequal'))
+    # suite.addTest(Meituan('testA_login'))
+    # suite.addTest(Meituan('testB_distance'))
+    # suite.addTest(Meituan('testC_assertequal'))
+    suite.addTest(Meituan('testD_Firstpageimgs'))
     runner=HTMLTestRunner.HTMLTestRunner(stream=open('result.html','w+'),title='lanjingjing',description='这是我的测试报告')
     runner.run(suite)
 
@@ -55,5 +73,3 @@ if __name__ == '__main__':
 
 
 
-    def tearDown(self):
-        pass
