@@ -1,6 +1,8 @@
 import unittest
 from nativeApp.browser import FindElement
 from HTMLTestRunner import HTMLTestRunner
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Meituan(unittest.TestCase):
     def setUp(self):
@@ -54,6 +56,34 @@ class Meituan(unittest.TestCase):
         self.assertIsNotNone(jiudian)
         self.assertIsNotNone(yule)
         self.assertIsNotNone(waimai)
+    def testE_guessYouLover(self):
+
+        find=self.myfind
+        #移动半个页面才能出来如下控件
+        find.myTopScroll(1,'com.sankuai.meituan:id/actionbar_scan_iv')
+
+        guess=find.myfindXpath('//android.widget.TextView[contains(@text,\'猜你喜欢\')]')
+
+
+        for i in range(1000):
+            find.myTopScroll(30)
+
+            try:
+                all=find.myfindXpath('//android.widget.TextView[contains(@text,\'查看全部\')]')
+                # self.assertEqual(guess.text, '猜你稀饭')
+                self.assertEqual(all.text, '查看全部')
+                return
+            except:
+                pass
+
+
+
+
+
+
+
+
+
     def tearDown(self):
         pass
 
@@ -64,7 +94,8 @@ if __name__ == '__main__':
     # suite.addTest(Meituan('testA_login'))
     # suite.addTest(Meituan('testB_distance'))
     # suite.addTest(Meituan('testC_assertequal'))
-    suite.addTest(Meituan('testD_Firstpageimgs'))
+    # suite.addTest(Meituan('testD_Firstpageimgs'))
+    suite.addTest(Meituan('testE_guessYouLover'))
     runner=HTMLTestRunner.HTMLTestRunner(stream=open('result.html','w+'),title='lanjingjing',description='这是我的测试报告')
     runner.run(suite)
 

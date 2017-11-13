@@ -56,7 +56,7 @@ class FindElement(object):
 
     def myimplicitly_wait(self,number):
         self.driver.implicitly_wait(number)
-    def myScroll(self,number,id):
+    def myLeftScroll(self,number,id):
         ID=(By.ID,id)
         WebDriverWait(self.driver,30,0.5).until(EC.presence_of_element_located(ID))
 
@@ -67,6 +67,20 @@ class FindElement(object):
             x2 = int(self.width * 0.05)
             y = int(self.height * 0.5)
             self.driver.swipe(x1, y, x2, y, 1000)
+
+    def myTopScroll(self, number,id=None):#number是滑动几次  id是页面上出现那个元素时开始滑动
+        if id!=None:
+            ID = (By.ID, id)
+            WebDriverWait(self.driver, 30, 0.5).until(EC.presence_of_element_located(ID))
+
+        for i in range(number):
+            self.driver.implicitly_wait(30)
+            x = int(self.width*0.5)
+            y1 = int(self.height * 0.75)
+            y2 = int(self.width * 0.25)
+
+            self.driver.swipe(x, y1, x, y2, 1000)
+
 
 
 

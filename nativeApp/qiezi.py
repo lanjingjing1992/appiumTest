@@ -6,7 +6,7 @@ class qiezi(unittest.TestCase):
         self.myfind=FindElement('com.qiezzi.eggplant','com.qiezzi.eggplant.base.WelcomeActivity')
 
     def testExperience(self):#立即体验
-        self.myfind.myScroll(4, 'com.qiezzi.eggplant:id/btn_firstinstall_intent')
+        self.myfind.myLeftScroll(4, 'com.qiezzi.eggplant:id/btn_firstinstall_intent')
         self.myfind.myfindId('com.qiezzi.eggplant:id/btn_feel_right_now').click()
 
     def testlogin(self):#登陆或者注册页面
