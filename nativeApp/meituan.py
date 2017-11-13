@@ -1,6 +1,7 @@
 import unittest
 from nativeApp.browser import FindElement
 from HTMLTestRunner import HTMLTestRunner
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -56,20 +57,37 @@ class Meituan(unittest.TestCase):
         self.assertIsNotNone(jiudian)
         self.assertIsNotNone(yule)
         self.assertIsNotNone(waimai)
+    def all_recommend(self,find,a=1):#如果输入1则每次移动30个页面
+        if a==1:
+            find.myTopScroll(30)
+        elif a==2:#输入2则每次移动1个页面，用于打印出所有页面的内容
+            find.myTopScroll(1)
+    # def testF_allRecommend(self):
+    #     for i in range(1000):
+
+
+
     def testE_guessYouLover(self):
 
         find=self.myfind
         #移动半个页面才能出来如下控件
-        find.myTopScroll(1,'com.sankuai.meituan:id/actionbar_scan_iv')
+        find.myTopScroll(1,'com.sankuai.meituan:id/actionbar_scan_iv')#猜你喜欢文案
 
         guess=find.myfindXpath('//android.widget.TextView[contains(@text,\'猜你喜欢\')]')
 
-
-        for i in range(1000):
-            find.myTopScroll(30)
+        file = open('test.txt', 'w+')
+        for i in range(1000):#移动很多次
+            self.all_recommend(find,2)#每次移动多少个页面
 
             try:
-                all=find.myfindXpath('//android.widget.TextView[contains(@text,\'查看全部\')]')
+
+                titles=find.myfindClassName('android.widget.TextView')
+                for i in titles:
+                    file = open('test.txt', 'a+')
+                    file.write(i.text+'\n')
+
+                self.assertEqual(titles.text,' ')
+                all = find.myfindXpath('//android.widget.TextView[contains(@text,\'查看全部\')]')
                 # self.assertEqual(guess.text, '猜你稀饭')
                 self.assertEqual(all.text, '查看全部')
                 return

@@ -26,11 +26,19 @@ class FindElement(object):
             return self.driver.find_element_by_id(id)
         except:
             pass
+    def myFindIds(self,id):
+        try:
+            ID = (By.ID, id)
+            WebDriverWait(self.driver, 30, 0.5).until(EC.presence_of_all_elements_located_located(ID))
+            return self.driver.find_elements_by_id(id)
+        except:
+            pass
+
     def myfindClassName(self,className):
         try:
             classN=(By.CLASS_NAME,className)
             WebDriverWait(self.driver,30,0.5).until(EC.presence_of_element_located(classN))
-            return self.driver.find_element_by_class_name(className)
+            return self.driver.find_elements_by_class_name(className)
         except:
             pass
 
