@@ -1,13 +1,18 @@
 import unittest
+from nativeApp.Logger import Logger
 from nativeApp.browser import FindElement
 from HTMLTestRunner import HTMLTestRunner
+from time import sleep
 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 class Meituan(unittest.TestCase):
+#---------------------初始化appium驱动-----------------------
     def setUp(self):
         self.myfind=FindElement('com.sankuai.meituan','com.sankuai.meituan.activity.Welcome')
+
+#----------------------登陆并且检查登陆页内容--------------------------
+
+
 
     def testA_login(self):
         #点击我的
@@ -22,6 +27,11 @@ class Meituan(unittest.TestCase):
         find.myfindId('com.sankuai.meituan:id/user_name').click()#点击文本登陆
         regist2 = find.myfindId('com.sankuai.meituan:id/action_signup').text
         self.assertEqual(regist2, '注册')
+
+#--------------------------------点击头像登陆与点击文案登陆是否都可以正常显示--------------
+
+
+
     def testB_distance(self):
         find = self.myfind
         # 点击我的
@@ -37,6 +47,12 @@ class Meituan(unittest.TestCase):
         self.assertEqual(usepthonelogin,'使用手机号登录')#判断文案是否一致
         useothers=find.myfindId('com.sankuai.meituan:id/passport_button_other').text
         self.assertEqual(useothers,'使用其他方式登录')
+
+#----------------------是否一致-------------------------------------------
+
+
+
+
     def testC_assertequal(self):
         find = self.myfind
         # 点击我的
@@ -45,6 +61,11 @@ class Meituan(unittest.TestCase):
         loginMode=find.myfindXpath('//android.widget.TextView[contains(@text,\'推荐登录方式\')]').text
         self.assertEqual('推荐登陆方式',loginMode)
         #检查美团首页的分类是否全部显示
+
+
+#--------------------------------检查首页文案------------------------------------
+
+
     def testD_Firstpageimgs(self):
         find = self.myfind
         meishi=find.myfindXpath('//android.widget.TextView[contains(@text,\'美食\')]')
@@ -57,6 +78,9 @@ class Meituan(unittest.TestCase):
         self.assertIsNotNone(jiudian)
         self.assertIsNotNone(yule)
         self.assertIsNotNone(waimai)
+#-----------------------滑动页面设置---------------------------------------------------
+
+
     def all_recommend(self,find,a=1):#如果输入1则每次移动30个页面
         if a==1:
             find.myTopScroll(30)
@@ -65,6 +89,8 @@ class Meituan(unittest.TestCase):
     # def testF_allRecommend(self):
     #     for i in range(1000):
 
+
+#--------------------------------30个一起滑动到底端或者一个个滑动并且打印文本内容--------------
 
 
     def testE_guessYouLover(self):
@@ -95,11 +121,25 @@ class Meituan(unittest.TestCase):
                 pass
 
 
+#--------------------------webview原理---------------------------------------
+
+    def testG_ChangePage(self):
+        #点击附近
+        find=self.myfind
+        find.myfindXpath('//android.widget.TextView[contains(@text,\'附近\')]').click()
+        sleep(5)#强制等待5秒 等待webview加载完成
+        find.myLeftScroll(3)#左滑3次到头
 
 
 
 
 
+
+
+
+
+
+#----------------清除方法-------------------------------
 
 
     def tearDown(self):
@@ -113,7 +153,8 @@ if __name__ == '__main__':
     # suite.addTest(Meituan('testB_distance'))
     # suite.addTest(Meituan('testC_assertequal'))
     # suite.addTest(Meituan('testD_Firstpageimgs'))
-    suite.addTest(Meituan('testE_guessYouLover'))
+    # suite.addTest(Meituan('testE_guessYouLover'))
+    suite.addTest(Meituan('testG_ChangePage'))
     runner=HTMLTestRunner.HTMLTestRunner(stream=open('result.html','w+'),title='lanjingjing',description='这是我的测试报告')
     runner.run(suite)
 

@@ -1,8 +1,10 @@
 from appium import webdriver
+from nativeApp.Logger import Logger
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import logging
 class FindElement(object):
     def __init__(self,appPackage,appActivity):
         self.desired_capabilities = {}
@@ -12,6 +14,7 @@ class FindElement(object):
         self.desired_capabilities['appPackage'] = appPackage
         self.desired_capabilities['appActivity'] = appActivity
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_capabilities)
+
         self.driver.implicitly_wait(30)
         #宽高：1080 1920
 
@@ -64,15 +67,16 @@ class FindElement(object):
 
     def myimplicitly_wait(self,number):
         self.driver.implicitly_wait(number)
-    def myLeftScroll(self,number,id):
-        ID=(By.ID,id)
-        WebDriverWait(self.driver,30,0.5).until(EC.presence_of_element_located(ID))
+    def myLeftScroll(self,number,id=None):
+        if id!=None:
+            ID=(By.ID,id)
+            WebDriverWait(self.driver,30,0.5).until(EC.presence_of_element_located(ID))
 
 
         for i in range(number):
             self.driver.implicitly_wait(30)
             x1 = int(self.width * 0.75)
-            x2 = int(self.width * 0.05)
+            x2 = int(self.width * 0.5)#偏移量
             y = int(self.height * 0.5)
             self.driver.swipe(x1, y, x2, y, 1000)
 
@@ -82,6 +86,7 @@ class FindElement(object):
             WebDriverWait(self.driver, 30, 0.5).until(EC.presence_of_element_located(ID))
 
         for i in range(number):
+
             self.driver.implicitly_wait(30)
             x = int(self.width*0.5)
             y1 = int(self.height * 0.75)
