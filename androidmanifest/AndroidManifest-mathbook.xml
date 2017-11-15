@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.nwoolf.xy.p532" platformBuildVersionCode="23" platformBuildVersionName="6.0-2704002">
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <application android:allowBackup="false" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:name="com.qihoo.util.StubApp1445449095" android:qihoo="activity" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <meta-data android:name="design_width" android:value="1536"/>
+        <meta-data android:name="design_height" android:value="2048"/>
+        <service android:exported="true" android:name="com.nwoolf.xy.p532.download.DownloadService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.nwoolf.xy.p532.voice_draw.MusicPlayService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.nwoolf.xy.p532.word.WordPlayService"/>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:launchMode="standard" android:name="com.nwoolf.xy.p532.MainActivity" android:screenOrientation="portrait" android:theme="@style/MainActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:enabled="false" android:exported="false" android:name="com.qihoo.util.QhJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTask" android:name="com.qihoo.util.CommonActivity" android:taskAffinity="com.nwoolf.xy.p532.util" android:theme="@android:style/Theme.Wallpaper.NoTitleBar"/>
+        <service android:enabled="true" android:exported="true" android:name="com.qihoo.util.CommonService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.qihoo.util.CommonService2"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.qihoo.util.CommonReceiver"/>
+        <provider android:authorities="com.nwoolf.xy.p532.COMMONPROVIDER" android:exported="true" android:name="com.qihoo.util.CommonProvider"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:launchMode="singleTask" android:name="com.qihoo.ls.LsActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"/>
+        <service android:exported="false" android:name="com.qihoo.ls.SoService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.nwoolf.xy.p532.PageActivity" android:screenOrientation="portrait" android:theme="@style/ScaleTheme"/>
+        <activity android:exported="false" android:label="@string/title_activity_about" android:name="com.nwoolf.xy.p532.activity.AboutActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:label="@string/title_activity_morebook" android:name="com.nwoolf.xy.p532.activity.MoreBookActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:hardwareAccelerated="true" android:label="@string/title_activity_help" android:name="com.nwoolf.xy.p532.activity.HelpActivity" android:screenOrientation="portrait" android:theme="@style/PushTheme"/>
+        <activity android:exported="false" android:label="@string/title_activity_feedback" android:name="com.nwoolf.xy.p532.activity.FeedbackActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize"/>
+        <activity android:exported="false" android:label="@string/title_activity_feedback" android:name="com.nwoolf.xy.p532.activity.FeedbackDetailActivity" android:screenOrientation="portrait" android:theme="@style/ActivityNoAnimationTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.LoginActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.ResetPasswordActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.RegisterActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.BindPhoneActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.ModPhoneActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.ModPasswordActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.nwoolf.xy.p532.activity.SettingActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.LicenceActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.word.WordActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.word.WordTestActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.word.SentenceTestActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.PayActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.activity.PayConfirmActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.qihoo.appstore.common.updatesdk.lib.UpdateTipDialogActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="false" android:name="com.qihoo.appstore.updatelib.CheckUpdateService"/>
+        <provider android:authorities="com.nwoolf.xy.p532" android:exported="false" android:grantUriPermissions="true" android:name="com.qihoo.appstore.updatelib.UpdateProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/update_apk_path"/>
+        </provider>
+        <service android:exported="true" android:name="com.nwoolf.xy.p532.util.autoupdate.DownloadService"/>
+        <activity android:launchMode="standard" android:name="com.nwoolf.xy.p532.util.MyAlterDialog" android:theme="@style/MyAlterDialog"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.alipay.sdk.app.H5PayActivity" android:screenOrientation="behind"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.alipay.sdk.auth.AuthActivity" android:screenOrientation="behind"/>
+        <activity android:exported="true" android:launchMode="singleTop" android:name="com.nwoolf.xy.p532.wxapi.WXPayEntryActivity"/>
+        <activity android:exported="false" android:name="com.nwoolf.xy.p532.sonic.TestActivity" android:screenOrientation="portrait" android:theme="@style/ActivityTheme" android:windowSoftInputMode="adjustResize|stateVisible"/>
+    </application>
+</manifest>
