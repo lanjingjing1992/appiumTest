@@ -1,9 +1,8 @@
 import unittest
-from nativeApp.Logger import Logger
 from nativeApp.browser import FindElement
 from HTMLTestRunner import HTMLTestRunner
 from time import sleep
-
+from nativeApp.back import backtoinit
 
 class Meituan(unittest.TestCase):
 #---------------------初始化appium驱动-----------------------
@@ -143,7 +142,7 @@ class Meituan(unittest.TestCase):
 
 
     def tearDown(self):
-        pass
+        backtoinit(self.myfind.returnDriver())#回退到主界面
 
 
 

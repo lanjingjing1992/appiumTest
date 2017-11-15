@@ -1,5 +1,4 @@
 from appium import webdriver
-from nativeApp.Logger import Logger
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,6 +21,9 @@ class FindElement(object):
         self.height=self.driver.get_window_size()['height']
 
         print('连接成功')
+    def returnDriver(self):
+
+        return  self.driver
     def myfindId(self,id):
         try:
             ID=(By.ID,id)
@@ -74,9 +76,10 @@ class FindElement(object):
 
 
         for i in range(number):
-            self.driver.implicitly_wait(30)
-            x1 = int(self.width * 0.75)
-            x2 = int(self.width * 0.5)#偏移量
+            print('第%s次滑动'%(i+1))
+            time.sleep(2)
+            x1 = int(self.width)
+            x2 = int(self.width * 0.75)#偏移量
             y = int(self.height * 0.5)
             self.driver.swipe(x1, y, x2, y, 1000)
 
