@@ -86,9 +86,9 @@ class FindElement(object):
         for i in range(number):
             print('第%s次滑动'%(i+1))
             time.sleep(2)
-            x1 = int(self.width)
-            x2 = int(self.width * 0.75)#偏移量
-            y = int(self.height * 0.5)
+            x1 = int(self.width*0.9)
+            x2 = int(self.width * 0.05)#偏移量
+            y = int(self.height * 0.75)
             self.driver.swipe(x1, y, x2, y, 1000)
 
     def myTopScroll(self, number,id=None):#number是滑动几次  id是页面上出现那个元素时开始滑动
