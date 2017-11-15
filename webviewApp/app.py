@@ -1,6 +1,7 @@
 from appium import webdriver
 import unittest
 from time import sleep
+from nativeApp.back import backtoinit
 
 from nativeApp.browser import FindElement
 class Chrome(unittest.TestCase):
@@ -45,11 +46,13 @@ class Chrome(unittest.TestCase):
         for cons in d.contexts:
             if cons.lower().startswith('webview'):
                 d._switch_to.context(cons)
+                # print(d.current_url)获取当前的url
+
         find.myfindXpath('//*[@id="index"]/header/div[3]').click()
 
 
     def tearDown(self):
-        for i in range(10):#按back键退出acticity 使再次进入时是谷歌网址页面
-            self.find.returnDriver().keyevent(4)
+        #按back键退出acticity 使再次进入时是谷歌网址页面
+        backtoinit(self.find.returnDriver())
 
 
